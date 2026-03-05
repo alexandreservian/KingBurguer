@@ -1,0 +1,102 @@
+# =========================
+
+# Xcode
+
+# =========================
+
+build/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Xcode user settings
+
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+
+# Workspace settings
+
+*.xcworkspace/xcuserdata/
+
+# =========================
+
+# Swift Package Manager
+
+# =========================
+
+.swiftpm/
+.build/
+
+# =========================
+
+# CocoaPods
+
+# =========================
+
+Pods/
+Podfile.lock
+
+# =========================
+
+# Carthage
+
+# =========================
+
+Carthage/Build/
+
+# =========================
+
+# Fastlane
+
+# =========================
+
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# =========================
+
+# macOS
+
+# =========================
+
+.DS_Store
+
+# =========================
+
+# Logs
+
+# =========================
+
+*.log
+
+# =========================
+
+# Temporary files
+
+# =========================
+
+*.tmp
+*.swp
+*.lock
+
+# =========================
+
+# Environment files
+
+# =========================
+
+.env
+.env.local
+.env.*
+
+# =========================
+
+# Archives
+
+# =========================
+
+*.xcarchive
