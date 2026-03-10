@@ -13,6 +13,14 @@ class SigninViewController: UIViewController {
         let ed = UITextField()
         ed.backgroundColor = .white
         ed.placeholder = "Email"
+        ed.translatesAutoresizingMaskIntoConstraints = false
+        return ed
+    }()
+    
+    let password: UITextField = {
+        let ed = UITextField()
+        ed.backgroundColor = .white
+        ed.placeholder = "Entre com sua senha"
         return ed
     }()
     
@@ -23,6 +31,13 @@ class SigninViewController: UIViewController {
         
         view.addSubview(email)
         
-        email.frame = CGRect(x: 0, y: view.bounds.height / 2, width: view.bounds.size.width, height: 50)
+        let emailConstraints = [
+            email.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            email.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            email.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            email.heightAnchor.constraint(equalToConstant: 50.0),
+        ]
+        
+        NSLayoutConstraint.activate(emailConstraints)
     }
 }
