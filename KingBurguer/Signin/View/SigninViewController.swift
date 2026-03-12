@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
-class SigninViewController: UIViewController {
+class SigninViewController: UIViewController, SigninViewModelDelegate {
+    var viewModel: SigninViewModel? {
+        didSet {
+            viewModel?.delegate = self
+        }
+    }
+    
     let email: UITextField = {
         let ed = UITextField()
         ed.backgroundColor = .white
@@ -71,6 +77,10 @@ class SigninViewController: UIViewController {
     }
     
     @objc func sendDidTap(_ btn: UIButton) {
-        print("Clicou")
+        viewModel?.send()
+    }
+    
+    func viewModelDidChanged(viewModel: SigninViewModel) {
+        print("a viewmodel notificou a viewcontrol")
     }
 }
