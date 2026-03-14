@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class SigninViewController: UIViewController, SigninViewModelDelegate {
+class SigninViewController: UIViewController {
     var viewModel: SigninViewModel? {
         didSet {
             viewModel?.delegate = self
@@ -79,7 +79,9 @@ class SigninViewController: UIViewController, SigninViewModelDelegate {
     @objc func sendDidTap(_ btn: UIButton) {
         viewModel?.send()
     }
-    
+}
+
+extension SigninViewController: SigninViewModelDelegate {
     func viewModelDidChanged(state: SignInState) {
         print("Atual estado: \(state)")
     }
