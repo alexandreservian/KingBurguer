@@ -83,6 +83,18 @@ class SigninViewController: UIViewController {
 
 extension SigninViewController: SigninViewModelDelegate {
     func viewModelDidChanged(state: SignInState) {
-        print("Atual estado: \(state)")
+        switch state {
+            case .none:
+                break
+            case .loading:
+                break
+            case .goToHome:
+                break
+            case .error(let message):
+                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true)
+                break
+        }
     }
 }
