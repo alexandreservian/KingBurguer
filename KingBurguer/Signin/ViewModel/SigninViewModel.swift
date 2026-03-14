@@ -8,19 +8,23 @@
 import Foundation
 
 protocol SigninViewModelDelegate {
-    func viewModelDidChanged(viewModel: SigninViewModel)
+    func viewModelDidChanged(state: SignInState)
 }
 
 class SigninViewModel {
     var delegate: SigninViewModelDelegate?
     
-    var state: Bool = false {
+    var state: SignInState = .none {
         didSet {
-            delegate?.viewModelDidChanged(viewModel: self)
+            delegate?.viewModelDidChanged(state: state)
         }
     }
     
     func send() {
-        state = true
+        state = .loading
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.state = .error("Usuario nao existe")
+        }
     }
 }
