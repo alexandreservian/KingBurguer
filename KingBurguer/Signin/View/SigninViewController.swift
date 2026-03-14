@@ -41,14 +41,27 @@ class SigninViewController: UIViewController {
         return btn
     }()
     
+    lazy var register: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("Criar Conta", for: .normal)
+        btn.setTitleColor(.black, for: .normal)
+        btn.backgroundColor = .purple
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(registerDidTap), for: .touchUpInside)
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .orange
         
+        navigationItem.title = "Login"
+        
         view.addSubview(email)
         view.addSubview(password)
         view.addSubview(send)
+        view.addSubview(register)
         
         let emailConstraints = [
             email.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -71,13 +84,26 @@ class SigninViewController: UIViewController {
             send.heightAnchor.constraint(equalToConstant: 50.0),
         ]
         
+        let registerConstraints = [
+            register.leadingAnchor.constraint(equalTo: email.leadingAnchor),
+            register.trailingAnchor.constraint(equalTo: email.trailingAnchor),
+            register.topAnchor.constraint(equalTo: send.bottomAnchor, constant: 10.0),
+            register.heightAnchor.constraint(equalToConstant: 50.0),
+        ]
+        
         NSLayoutConstraint.activate(emailConstraints)
         NSLayoutConstraint.activate(passwordConstraints)
         NSLayoutConstraint.activate(sendConstraints)
+        NSLayoutConstraint.activate(registerConstraints)
     }
     
     @objc func sendDidTap(_ btn: UIButton) {
         viewModel?.send()
+    }
+    
+    @objc func registerDidTap(_ btn: UIButton) {
+        let signUpVC = SignUpViewController()
+        navigationController?.pushViewController(signUpVC, animated: true)
     }
 }
 

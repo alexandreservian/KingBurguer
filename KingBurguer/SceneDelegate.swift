@@ -19,9 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let signInVC = SigninViewController()
         signInVC.viewModel = viewModel
+
+        let navigation = UINavigationController(rootViewController: signInVC)
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
-        window?.rootViewController = signInVC
+        window?.rootViewController = navigation
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
     }
