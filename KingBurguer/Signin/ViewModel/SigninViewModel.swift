@@ -25,11 +25,15 @@ class SigninViewModel {
         state = .loading
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.state = .error("Usuario nao existe")
+            self.state = .goToHome
         }
     }
     
     func goToSignUp() {
         coordinator?.signUp()
+    }
+    
+    func goToHome() {
+        coordinator?.home()
     }
 }
