@@ -97,6 +97,17 @@ class SigninViewController: UIViewController {
         NSLayoutConstraint.activate(registerConstraints)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
     @objc func sendDidTap(_ btn: UIButton) {
         viewModel?.send()
     }
