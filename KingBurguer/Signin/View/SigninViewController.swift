@@ -15,18 +15,22 @@ class SigninViewController: UIViewController {
         }
     }
     
-    let email: UITextField = {
+    lazy var email: UITextField = {
         let ed = UITextField()
         ed.backgroundColor = .white
         ed.placeholder = "Email"
+        ed.returnKeyType = .next
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
     
-    let password: UITextField = {
+    lazy var password: UITextField = {
         let ed = UITextField()
         ed.backgroundColor = .white
         ed.placeholder = "Entre com sua senha"
+        ed.returnKeyType = .done
+        ed.delegate = self
         ed.translatesAutoresizingMaskIntoConstraints = false
         return ed
     }()
@@ -114,6 +118,18 @@ class SigninViewController: UIViewController {
     
     @objc func registerDidTap(_ btn: UIButton) {
         viewModel?.goToSignUp()
+    }
+}
+
+extension SigninViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField.returnKeyType == .done) {
+            view.endEditing(true)
+            return false
+        } else {
+            password.becomeFirstResponder()
+        }
+        return false
     }
 }
 
